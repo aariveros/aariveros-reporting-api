@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -8,6 +7,7 @@ using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using aariveros_reporting_api.Models;
 using System;
+using Newtonsoft.Json;
 
 namespace aariveros_reporting_api
 {
@@ -52,11 +52,14 @@ namespace aariveros_reporting_api
                     ";User=" + user + 
                     ";Password=" + password));
 
-             // Add framework services.
-            services.AddMvc();
+             services.AddMvc()
+                .AddJsonOptions(options => {
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                });
 
             services.AddSingleton<IEnterprisesRepository, EnterprisesRepository>();
             services.AddSingleton<IProjectsRepository, ProjectsRepository>();
+            services.AddSingleton<IEmployeesRepository, EmployeesRepository>();
 
         }
 
@@ -69,6 +72,8 @@ namespace aariveros_reporting_api
             loggerFactory.AddDebug();
 
             app.UseMvcWithDefaultRoute();
+
+            
         }
     }
 }

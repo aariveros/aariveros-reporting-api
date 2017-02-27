@@ -8,9 +8,10 @@ using aariveros_reporting_api.Models;
 namespace aariverosreportingapi.Migrations
 {
     [DbContext(typeof(ReportingContext))]
-    partial class ReportingContextModelSnapshot : ModelSnapshot
+    [Migration("20170226205445_004_Employee")]
+    partial class _004_Employee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.2")

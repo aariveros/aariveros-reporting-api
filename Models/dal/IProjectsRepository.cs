@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace aariveros_reporting_api.Models

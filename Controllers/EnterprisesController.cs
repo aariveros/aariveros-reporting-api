@@ -58,6 +58,10 @@ namespace aariveros_reporting_api.Controllers
             }
 
             enterprise.name = item.name;
+            enterprise.managerId = item.managerId;
+            enterprise.officePhone = item.officePhone;
+            enterprise.cellPhone = item.cellPhone;
+            enterprise.mail = item.mail;
 
             Enterprises.Update(enterprise);
             return new NoContentResult();

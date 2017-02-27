@@ -58,6 +58,10 @@ namespace aariveros_reporting_api.Controllers
             }
 
             project.name = item.name;
+            project.managerId = item.managerId;
+            project.officePhone = item.officePhone;
+            project.cellPhone = item.cellPhone;
+            project.mail = item.mail;
 
             Projects.Update(project);
             return new NoContentResult();

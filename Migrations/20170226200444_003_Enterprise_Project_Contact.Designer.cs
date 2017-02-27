@@ -8,35 +8,14 @@ using aariveros_reporting_api.Models;
 namespace aariverosreportingapi.Migrations
 {
     [DbContext(typeof(ReportingContext))]
-    partial class ReportingContextModelSnapshot : ModelSnapshot
+    [Migration("20170226200444_003_Enterprise_Project_Contact")]
+    partial class _003_Enterprise_Project_Contact
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.2")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("aariveros_reporting_api.Models.Employee", b =>
-                {
-                    b.Property<int>("employeeId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("cellPhone");
-
-                    b.Property<int>("enterpriseId");
-
-                    b.Property<string>("firstName");
-
-                    b.Property<string>("mail");
-
-                    b.Property<string>("surName");
-
-                    b.HasKey("employeeId");
-
-                    b.HasIndex("enterpriseId");
-
-                    b.ToTable("Employees");
-                });
 
             modelBuilder.Entity("aariveros_reporting_api.Models.Enterprise", b =>
                 {
@@ -80,14 +59,6 @@ namespace aariverosreportingapi.Migrations
                     b.HasIndex("enterpriseId");
 
                     b.ToTable("Projects");
-                });
-
-            modelBuilder.Entity("aariveros_reporting_api.Models.Employee", b =>
-                {
-                    b.HasOne("aariveros_reporting_api.Models.Enterprise", "enterprise")
-                        .WithMany("employees")
-                        .HasForeignKey("enterpriseId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("aariveros_reporting_api.Models.Project", b =>
