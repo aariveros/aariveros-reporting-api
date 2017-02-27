@@ -20,7 +20,7 @@ namespace aariveros_reporting_api.Models
         public int enterpriseId { get; set; }
         public string name { get; set; }
 
-        public int managerId { get; set; }
+        public int? managerId { get; set; }
 
         public string officePhone { get; set; }
         public string cellPhone { get; set; }
@@ -36,7 +36,7 @@ namespace aariveros_reporting_api.Models
         public int projectId { get; set; }
         public string name { get; set; }
 
-        public int managerId { get; set; }
+        public int? managerId { get; set; }
 
         public string officePhone { get; set; }
         public string cellPhone { get; set; }
