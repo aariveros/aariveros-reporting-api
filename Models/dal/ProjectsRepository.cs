@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace aariveros_reporting_api.Models
@@ -14,12 +15,15 @@ namespace aariveros_reporting_api.Models
 
         public IEnumerable<Project> GetAll()
         {
-            return context.Projects.ToList();
+            return context.Projects
+                .Include(x => x.enterprise)
+                .ToList();
         }
 
         public Project Find(int id)
         {
             return context.Projects
+                .Include(x => x.enterprise)
                 .FirstOrDefault(t => t.projectId == id);
         }
 

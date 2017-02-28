@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace aariveros_reporting_api.Models
@@ -14,12 +15,15 @@ namespace aariveros_reporting_api.Models
 
         public IEnumerable<Employee> GetAll()
         {
-            return context.Employees.ToList();
+            return context.Employees
+                .Include(x => x.enterprise)
+                .ToList();
         }
 
         public Employee Find(int id)
         {
             return context.Employees
+                .Include(x => x.enterprise)
                 .FirstOrDefault(t => t.employeeId == id);
         }
 
